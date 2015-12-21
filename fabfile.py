@@ -54,7 +54,7 @@ def deploy_app():
 def reload_app():
     """Uses supervisorctl to restart the application"""
     require("app_directory", provided_by=("staging", "production", "local"))
-    run("sudo supervisorctl restart urlshorten:*")
+    run("sudo supervisorctl restart analytics_parser:*")
 
 def deploy():
     deploy_app()
