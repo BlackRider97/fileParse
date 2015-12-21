@@ -2,25 +2,20 @@ Installation on Ubuntu:
 =======================
 1. $sudo apt-get install fabric              (install fabric )
 2. $sudo apt-get install python-virtualenv   (installl virtaualenv)
-3. $sudo apt-get install python-dev libmysqlclient-dev python-mysqldb (install mysql and its python client dependencies)
-4. $sudo apt-get install -y redis-server (install redis)
-5. $redis-server ( to run the redis server )
-6. Make sure mysql is running
-
 
 How to run server:
 =================
 
-$ cd /path-to-this-directory/file-parse/  ( go to this project directory)
+$ `cd /path-to-this-directory/file-parse/`  ( go to this project directory)
 
 On localhost
 -------------
 Bootstrap the project ( only one time requirement )
-1. fab setup_localhost
+1. `fab setup_localhost`
 
 To run the server
-1. source ./venv/bin/activate 
-2. python fileparse/server.py 
+1. `source ./venv/bin/activate` 
+2. `python fileparse/server.py` 
 
 Also added fabfile for production and staging environment which uses supervisor as process watcher.
 see supervisor conf file
@@ -39,10 +34,10 @@ To depoy code and run the server
 On staging
 -------------
 Bootstrap the project ( only one time requirement )
-1. fab staging create_virtualenv
+1. `fab staging create_virtualenv`
 
 To depoy code and run the server
-1. fab staging all  
+1. `fab staging all`  
 
 Also added fabfile for production and staging environment which uses supervisor as process watcher.
 see supervisor conf file
@@ -51,7 +46,8 @@ $ vi ./conf/fileparse.conf
  
 Uses:
 =====
-1. curl localhost:5000/get_logs/1450708114/le/hikesecretsanta -X GET
+1. `curl localhost:5000/get_logs/1450708114/le/hikesecretsanta -X GET`
+```
 {
   "data": [
     {
@@ -77,4 +73,4 @@ Uses:
   ], 
   "status": "ok"
 }
-
+```
