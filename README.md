@@ -46,7 +46,8 @@ $ vi ./conf/fileparse.conf
  
 Uses:
 =====
-1. `curl localhost:5000/logs/1450708114/le/hikesecretsanta -X GET`
+1. 
+  `curl localhost:5000/logs/1450708114/le/hikesecretsanta -X GET`
 ```
 {
   "data": [
@@ -74,8 +75,9 @@ Uses:
   "status": "ok"
 }
 ```
+2. 
+   `curl -X GET localhost:5000/tags`
 
-2. $ `curl -X GET localhost:5000/tags`
 ```
 {
   "data": [
