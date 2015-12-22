@@ -46,7 +46,8 @@ $ vi ./conf/fileparse.conf
  
 Uses:
 =====
-1. `curl localhost:5000/get_logs/1450708114/le/hikesecretsanta -X GET`
+1. 
+  `curl localhost:5000/logs/1450708114/le/hikesecretsanta -X GET`
 ```
 {
   "data": [
@@ -70,6 +71,33 @@ Uses:
       "tag": "mob", 
       "ts": 1450703523
     }
+  ], 
+  "status": "ok"
+}
+```
+2. 
+   `curl -X GET localhost:5000/tags`
+
+```
+{
+  "data": [
+    "sess", 
+    "le", 
+    "dndoptin", 
+    "mute", 
+    "mm", 
+    "bot", 
+    "app", 
+    "af", 
+    "m", 
+    "ts", 
+    "devdisconnect", 
+    "devconnect", 
+    "bm", 
+    "gm", 
+    "dr", 
+    "smssend", 
+    "ac"
   ], 
   "status": "ok"
 }
