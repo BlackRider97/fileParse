@@ -101,4 +101,4 @@ def get_tags():
 
 if __name__ == '__main__':
     logging.error("Starting file parse server.....")
-    app.run(debug = True)     
+    app.run(host='0.0.0.0', debug= True)    
