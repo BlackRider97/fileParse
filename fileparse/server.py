@@ -56,7 +56,7 @@ def get_all_directores_log_file(_dir):
         result.extend(get_all_directores_log_file(abs_dirpath))
     return result
 
-@app.route('/get_logs/<int:time_stamp>/<tag>/<msisdn>', methods = ['GET'])
+@app.route('/logs/<int:time_stamp>/<tag>/<msisdn>', methods = ['GET'])
 def get_analytics_logs(time_stamp, tag, msisdn):  
     if not time_stamp or not msisdn or not tag:
         abort(400)    
@@ -80,7 +80,24 @@ def get_analytics_logs(time_stamp, tag, msisdn):
                     if not msisdn in log_packet:
                         continue
                     data.append(json.loads(log_packet))                                  
-    return jsonify( { 'data': data, 'status': "ok" } ), 201
+    return jsonify( { 'data': data, 'status': "ok" } ), 200
+
+
+@app.route('/tags', methods = ['GET'])
+def get_tags():  
+    directories = app.fileparse_config['directories']
+    data = set()
+    for _dir in directories:
+        all_log_files = get_all_directores_log_file_cache(_dir)
+        for _file in all_log_files:
+                for line in open(_file, "r"):
+                    data_split = line.split("|")
+                    if len(data_split) < 3:
+                        continue
+                    log_tag = data_split[1]
+                    if log_tag:
+                        data.add(log_tag)                                 
+    return jsonify( { 'data': list(data), 'status': "ok" } ), 200
 
 if __name__ == '__main__':
     logging.error("Starting file parse server.....")
